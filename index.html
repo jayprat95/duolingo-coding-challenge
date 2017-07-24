@@ -1,0 +1,64 @@
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GETTING STARTED WITH BRACKETS</title>
+        <meta name="description" content="">
+        <link rel="stylesheet" href="main.css">
+    </head>
+
+
+<body>
+<h1>Enter two strings to see if they are anagrams</h1>
+<div class="two-col">
+    <div class="col1">
+        <label for="field1">String One:</label>
+        <input id="field1" name="field1" type="text">
+    </div>
+
+    <div class="col2">
+        <label for="field2">String Two:</label>
+        <input id="field2" name="field2" type="text">
+    </div>
+</div>
+
+<button onclick="compareFunction()">Submit</button>
+</body>
+
+<script>
+    function compareFunction() {
+        
+        //get values of two strings
+        var str1 = document.getElementById("field1").value;
+        var str2 = document.getElementById("field2").value;
+        
+        //check size of strings 
+        if(str1.length == 0 || str2.length == 0) {
+            alert("enter two valid strings"); 
+        }
+        else {
+          
+          //if the two strings are anagrams then they are the same string sorted
+          if(sortString(str1) == sortString(str2)) {
+              alert(str1 + " is an anagram of " + str2); 
+          }
+        else {
+            //not an anagram
+            alert(str1 + " is not an anagram of " + str2); 
+        }
+            
+        }
+    }
+    
+    function sortString(text) {
+        
+        //remove space
+        text = text.replace(/\s/g, '');
+
+        //make string lower
+        text = text.toLowerCase();
+        
+        //sort the string and return it in ascending order
+        return text.split('').sort().join('');
+    }
+</script>
